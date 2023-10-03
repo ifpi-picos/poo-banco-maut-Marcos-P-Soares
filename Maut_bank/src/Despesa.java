@@ -1,11 +1,11 @@
 import java.util.Date;
 
-public class Transacao {
+public class Despesa {
     private Date data;
     private String descricao;
     private double valor;
 
-    public Transacao(Date data, String descricao, double valor) {
+    public Despesa(Date data, String descricao, double valor) {
         this.data = data;
         this.descricao = descricao;
         this.valor = valor;
@@ -22,5 +22,5 @@ public class Transacao {
     public double getValor() {
         return valor;
     }
+    
 }
-
