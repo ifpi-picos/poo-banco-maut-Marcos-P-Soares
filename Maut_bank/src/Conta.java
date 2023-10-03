@@ -16,8 +16,14 @@ public class Conta {
         return agencia;
     }
     
+    public String getNumeroConta (){
+        return this.numero_conta;
+    }
+
     public double consultarSaldo() {
         return this.saldo;
     }
+
+
      
 }
