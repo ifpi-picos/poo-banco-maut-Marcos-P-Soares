@@ -5,11 +5,13 @@ public class Conta {
     private String agencia;
     private String numeroConta;
     private double saldo;
+    private Cliente cliente;
 
-    public Conta (String agencia, String numeroConta, double saldo, String id_cliente) {
+    public Conta (String agencia, String numeroConta, double saldo, Cliente cliente) {
         this.agencia = agencia;
         this.numeroConta = numeroConta;
         this.saldo = saldo;
+        this.cliente = cliente;
     }
 
     public String getAgencia() {
@@ -22,6 +24,10 @@ public class Conta {
 
     public double consultarSaldo() {
         return this.saldo;
+    }
+
+    public Cliente getCliente () {
+        return cliente;
     }
 
 

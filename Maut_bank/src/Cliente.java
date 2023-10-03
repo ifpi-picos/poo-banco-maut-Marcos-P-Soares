@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
+
 //Para que um cliente abra uma conta no banco Maut, ele deve informar os seguintes dados: nome, CPF, data de nascimento e endereço completo;
 
 public class Cliente {
@@ -8,7 +8,6 @@ public class Cliente {
     private String cpf;
     private LocalDate dataNascimento;
     private Endereco endereco;
-    private List<Conta> contas;
 
     public Cliente(String nome, String cpf, LocalDate dataNascimento, Endereco endereco) {
         this.nome = nome;
@@ -16,7 +15,6 @@ public class Cliente {
         this.endereco = endereco;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
-        this.contas = new ArrayList<>();
     }
 
     public String getNome () {
@@ -27,12 +25,9 @@ public class Cliente {
         return cpf;
     }
 
-    public Endereco getEndereco () {
-        return endereco;
-    }
-
     public LocalDate getDataNascimento() {
         return dataNascimento;
     }
+
 
 }
