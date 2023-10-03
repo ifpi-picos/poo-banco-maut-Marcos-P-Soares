@@ -6,19 +6,33 @@ import java.util.List;
 public class Cliente {
     private String nome;
     private String cpf;
-    private LocalDate data_nascimento;
+    private LocalDate dataNascimento;
     private Endereco endereco;
     private List<Conta> contas;
 
-    public Cliente(String nome, String cpf, LocalDate data_nascimento, Endereco endereco) {
+    public Cliente(String nome, String cpf, LocalDate dataNascimento, Endereco endereco) {
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
-        this.data_nascimento = data_nascimento;
+        this.dataNascimento = dataNascimento;
         this.endereco = endereco;
         this.contas = new ArrayList<>();
     }
 
+    public String getNome () {
+        return nome;
+    }
     
+    public String getCpf() {
+        return cpf;
+    }
+
+    public Endereco getEndereco () {
+        return endereco;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
 
 }

@@ -3,12 +3,12 @@
 
 public class Conta {
     private String agencia;
-    private String numero_conta;
+    private String numeroConta;
     private double saldo;
 
-    public Conta (String agencia, String numero_conta, double saldo, String id_cliente) {
+    public Conta (String agencia, String numeroConta, double saldo, String id_cliente) {
         this.agencia = agencia;
-        this.numero_conta = numero_conta;
+        this.numeroConta = numeroConta;
         this.saldo = saldo;
     }
 
@@ -17,7 +17,7 @@ public class Conta {
     }
     
     public String getNumeroConta (){
-        return this.numero_conta;
+        return numeroConta;
     }
 
     public double consultarSaldo() {
