@@ -61,24 +61,44 @@ public class Conta {
         if(valor > 0 && this.saldo >= valor){
             this.saldo -= valor;
             Despesa transacao = new Despesa(new Date(), descricao, valor);
-            // contaDestino.despositar(valor, "Transferência recebida de" + this.getNumeroConta());
+            this.despesas.add(transacao);
+            // contaDestino.despositar(valor, descricao);
         }else{
             System.out.println("Transferência inválida: valor invalido ou saldo insuficiente");
         }
     }
     
     public void listarDespesas (){
-        
+        System.out.println("Lista de Despesas:");
+        int index = 1;
+        for(Despesa despesas: this.despesas){
+            System.out.println(index + ". Data: "+ despesas.getData() + "\nDescrição: "+ despesas.getDescricao() + "\nValor: " + despesas.getValor());
+            index++;
+        }
     }
     
-    public void listarReceitas (){}
-
-    public void gerarExtrato (){
+    public void listarReceitas (){
         System.out.println("Lista de Receitas:");
         int index = 1;
         for(Receita receitas: this.receitas){
             System.out.println(index + ". Data: "+ receitas.getData() + "\nDescrição: "+ receitas.getDescricao() + "\nValor: " + receitas.getValor());
+            index++;
+        }
 
+    }
+
+    public void gerarExtrato (){
+        System.out.println("Extrato:"); 
+        System.out.println("Receitas:"); 
+        int index = 1;
+        for(Receita receitas: this.receitas){
+            System.out.println(index + ". Data: "+ receitas.getData() + "\nDescrição: "+ receitas.getDescricao() + "\nValor: " + receitas.getValor());
+            index++;
+        }
+        System.out.println("Despesas:"); 
+        index = 1;
+        for(Despesa despesas: this.despesas){
+            System.out.println(index + ". Data: "+ despesas.getData() + "\nDescrição: "+ despesas.getDescricao() + "\nValor: " + despesas.getValor());
             index++;
         }
     }
