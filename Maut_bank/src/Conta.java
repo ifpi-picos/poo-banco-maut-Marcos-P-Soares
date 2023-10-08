@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDate;
 import java.util.Random;
 
 public class Conta {
@@ -10,7 +9,7 @@ public class Conta {
     private Cliente cliente;
     private List<Receita> receitas;
     private List<Despesa> despesas;
-    private static final String CARACTERES_VALIDOS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    private static final String CARACTERES_VALIDOS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
     public Conta (String agencia, String numeroConta, double saldo, Cliente cliente) {
         this.agencia = agencia;
@@ -26,7 +25,7 @@ public class Conta {
         Random random = new Random();
         StringBuilder numeroConta = new StringBuilder();
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 4; i++) {
             numeroConta.append(CARACTERES_VALIDOS.charAt(random.nextInt(CARACTERES_VALIDOS.length())));
         }
 
@@ -41,7 +40,7 @@ public class Conta {
         Random random = new Random();
         StringBuilder numeroAgencia = new StringBuilder();
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             numeroAgencia.append(CARACTERES_VALIDOS.charAt(random.nextInt(CARACTERES_VALIDOS.length())));
         }
 
