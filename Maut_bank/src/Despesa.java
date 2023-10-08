@@ -1,17 +1,17 @@
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Despesa {
-    private Date data;
+    private LocalDate data;
     private String descricao;
     private double valor;
 
-    public Despesa(Date data, String descricao, double valor) {
-        this.data = data;
+    public Despesa(String descricao, double valor) {
+        this.data = LocalDate.now();
         this.descricao = descricao;
         this.valor = valor;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
