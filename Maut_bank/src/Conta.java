@@ -3,8 +3,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Conta {
-    private String agencia;
-    private String numeroConta;
+    private final String agencia;
+    private final String numeroConta;
     private double saldo;
     private Cliente cliente;
     private List<Receita> receitas;
