@@ -13,43 +13,39 @@ public class Cadastro {
     }
 
     public void cadastrarCliente() {
+        LocalDate dataNascimento = null;
+
         System.out.println("Para criar sua conta forneça os dados solicitados abaixo: \n");
-        System.out.println("Informe seu Nome: ");
+        System.out.println("Informe seu Nome: |*Campo Obrigatório");
         String nome = scanner.next(); // Lê até encontrar um espaço em branco
 
-        System.out.println("Informe seu CPF: ");
+        System.out.println("Informe seu CPF:  | *Campo obrigatório" );
         String cpf = scanner.next();
-
-        System.out.println("Informe sua Data de Nascimento (no formato YYYY-MM-DD): ");
-        String dataNascimentoStr = scanner.next();
-        LocalDate dataNascimento = LocalDate.parse(dataNascimentoStr);
-
-        System.out.println("Informe seu País: ");
-        String pais = scanner.next();
-
-        System.out.println("Informe seu Estado: ");
-        String estado = scanner.nextLine();
-
-        System.out.println("Informe sua Cidade: ");
-        String cidade = scanner.nextLine();
-
-        System.out.println("Informe seu Bairro: ");
-        String bairro = scanner.nextLine();
-
-        System.out.println("Informe sua Rua: ");
-        String rua = scanner.nextLine();
-
-        System.out.println("Informe seu CEP: ");
-        String cep = scanner.nextLine();
-
-        System.out.println("Informe uma Referência para seu endereço: ");
-        String referencia = scanner.nextLine();
-
-        // Cria um objeto Endereco com os dados fornecidos
-        Endereco endereco = new Endereco(pais, estado, cidade, bairro, rua, cep, referencia);
+        
+        scanner.nextLine();
+        
+        System.out.println("Informe sua Data de Nascimento (no formato YYYY-MM-DD):");
+        String dataNascimentoStr = scanner.nextLine();
+        if (dataNascimentoStr.isEmpty()) {
+            dataNascimentoStr = null;
+        } else {
+            dataNascimento = LocalDate.parse(dataNascimentoStr);
+        }
 
         // Cria um objeto Cliente com os dados fornecidos
-        Cliente cliente = new Cliente(nome, cpf, dataNascimento, endereco);
+        Cliente cliente = new Cliente(nome, cpf);
+
+        if(dataNascimentoStr != null){
+            cliente.setDataNascimento(dataNascimento);
+        }
+
+        System.out.println("Deseja cadastrar um endereço?");
+        System.out.println("1 - sim || 2 - não");
+        int escolha = scanner.nextInt();
+
+        if(escolha == 1){
+            cliente.setEndereco(cadastraEndereco());
+        }
 
         // Cria uma nova conta para o cliente com números únicos
         Conta novaConta = Conta.setConta(cliente);
@@ -82,6 +78,37 @@ public class Cadastro {
             return null; // Retorna null em caso de falha na autenticação
         }
     }
+
+    public Endereco cadastraEndereco(){
+
+        System.out.println("Informe seu País: ");
+        String pais = scanner.next();
+        scanner.nextLine();
+        
+        System.out.println("Informe seu Estado: ");
+        String estado = scanner.nextLine();
+
+        System.out.println("Informe sua Cidade: ");
+        String cidade = scanner.nextLine();
+
+        System.out.println("Informe seu Bairro: ");
+        String bairro = scanner.nextLine();
+
+        System.out.println("Informe sua Rua: ");
+        String rua = scanner.nextLine();
+
+        System.out.println("Informe seu CEP: ");
+        String cep = scanner.nextLine();
+
+        System.out.println("Informe uma Referência para seu endereço: ");
+        String referencia = scanner.nextLine();
+
+        // Cria um objeto Endereco com os dados fornecidos
+        Endereco endereco = new Endereco(pais, estado, cidade, bairro, rua, cep, referencia);
+        
+        return endereco;
+    }
+
 
     // Método para autenticar um cliente com base no número da conta e no CPF
     public Conta autenticarConta(String numeroConta, String cpf) {

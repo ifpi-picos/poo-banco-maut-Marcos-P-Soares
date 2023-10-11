@@ -97,12 +97,15 @@ public class App {
                 switch (escolha) {
                     case 1:
                         conta.listarReceitas();
+                        menuConta(conta);
                         break;
                     case 2:
                         conta.listarDespesas();
+                        menuConta(conta);
                         break;
                     case 3:
                         conta.gerarExtrato();
+                        menuConta(conta);
                         break;
                     default:
                         System.out.println("Opção inválida, retornando para o menu da Conta...");

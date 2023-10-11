@@ -9,7 +9,7 @@ public class Conta {
     private Cliente cliente;
     private List<Receita> receitas;
     private List<Despesa> despesas;
-    private static final String CARACTERES_VALIDOS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    private static final String CARACTERES_VALIDOS = "ABCDEF0123456789";
 
     public Conta (String agencia, String numeroConta, double saldo, Cliente cliente) {
         this.agencia = agencia;
@@ -126,13 +126,15 @@ public class Conta {
     }
 
     public void gerarExtrato (){
-        System.out.println("Extrato:"); 
+        System.out.println("Extrato:");
+         
         System.out.println("Receitas:"); 
         int index = 1;
         for(Receita receitas: this.receitas){
             System.out.println(index + ". Data: "+ receitas.getData() + "\nDescrição: "+ receitas.getDescricao() + "\nValor: " + receitas.getValor());
             index++;
         }
+
         System.out.println("Despesas:"); 
         index = 1;
         for(Despesa despesas: this.despesas){

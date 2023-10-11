@@ -2,15 +2,13 @@ import java.time.LocalDate;
 
 public class Cliente {
     private String nome;
-    private String cpf;
+    private final String cpf;
     private LocalDate dataNascimento;
     private Endereco endereco;
 
-    public Cliente(String nome, String cpf, LocalDate dataNascimento, Endereco endereco) {
+    public Cliente(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
-        this.endereco = endereco;
     }
 
     public String getNome () {
@@ -23,6 +21,20 @@ public class Cliente {
 
     public LocalDate getDataNascimento() {
         return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getEndereco(){
+        return endereco.toString();
+    }
+
+    public void setEndereco(Endereco endereco){
+        this.endereco = endereco;
+        
+
     }
 
 }
