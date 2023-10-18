@@ -1,36 +1,37 @@
 import java.util.List;
 import java.util.Random;
 
-public class Conta {
-    private final String agencia;
-    private final String conta;  
-    private double saldo;
+public abstract class Conta {
+    protected final int agencia;
+    protected final int conta;  
+    protected double saldo;
     private Cliente clienteVinculado;
     private static int contador = 0;
     
-    public Conta(Cliente clienteVinculado) {
+    protected Conta(Cliente clienteVinculado) {
         this.clienteVinculado = clienteVinculado;
         this.saldo = 0;
-        this.conta = gerarNumeroContaIncremental();
+        this.conta = contador;
         this.agencia = gerarAgenciaAleatoria();
-    }
-
-    private String gerarAgenciaAleatoria() {
-        Random random = new Random();
-        int agenciaInt = random.nextInt(10000); // Números aleatórios de 0 a 9999
-        return String.format("%04d", agenciaInt); // Formata com 4 casas decimais
-    }
-
-    private String gerarNumeroContaIncremental() {
         contador++;
-        return String.format("%06d", contador); // Formata com 6 casas decimais
+    }
+
+    //Gera uma conta 
+    private int gerarAgenciaAleatoria() {
+        Random random = new Random();
+        int agencia = random.nextInt(10000);
+        return agencia;
+    }
+
+    public String getNumeroConta() {
+        return String.format("%06d", conta);
     }
     
-    public String getConta() {
+    public int getConta() {
         return conta;
     }
 
-    public String getAgencia() {
+    public int getAgencia() {
         return agencia;
     }    
 
