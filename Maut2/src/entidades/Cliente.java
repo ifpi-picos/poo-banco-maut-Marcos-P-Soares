@@ -1,4 +1,6 @@
+package entidades;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Cliente {
     
@@ -21,8 +23,9 @@ public class Cliente {
         return cpf;
     }
 
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
+    public String getDataNascimento() {
+        DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return dataNascimento.format(formatoData);
     }
     
     public String getEndereco(){

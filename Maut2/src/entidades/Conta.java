@@ -1,3 +1,4 @@
+package entidades;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -6,9 +7,10 @@ public abstract class Conta {
     protected final int agencia;
     protected final int conta;  
     protected double saldo;
-    private Cliente cliente;
-    private List<Transacao> transacoes;
-    private static int contador = 0;
+    protected Cliente cliente;
+    protected List<Transacao> transacoes;
+    protected static int contador = 0;
+    protected double taxaTransferencia = 0.10;
     
     protected Conta(Cliente cliente) {
         this.cliente = cliente;
@@ -38,6 +40,11 @@ public abstract class Conta {
         return agencia;
     }    
 
+    public double getSaldo() {
+        return saldo;
+    }
+
+
     public void depositar(double valor, String descricao) {
         if (valor > 0) {
             this.saldo += valor;
@@ -50,7 +57,7 @@ public abstract class Conta {
 
     public void sacar(double valor, String descricao) {
         if (valor > 0) {
-            this.saldo += valor;
+            this.saldo -= valor;
             Transacao transacao = new Transacao (descricao, valor);
             this.transacoes.add(transacao);
         } else {
@@ -58,16 +65,18 @@ public abstract class Conta {
         }
     }
 
+
     public void transferir(Conta destino, double valor, String descricao) {
-        if(valor > 0 && this.saldo >= valor){
-            this.saldo -= valor;
-            Transacao transacao = new Transacao (descricao, valor);
+        if (valor > 0 && (this.saldo +(this.saldo*this.taxaTransferencia)) >= valor) {
+            this.saldo -= valor * (1 + this.taxaTransferencia);
+            Transacao transacao = new Transacao(descricao, valor);
             this.transacoes.add(transacao);
-            // contaDestino.despositar(valor, descricao);
-        }else{
-            System.out.println("Transferência inválida: valor invalido ou saldo insuficiente");
-        }        
+            destino.depositar(valor, descricao);
+        }else {
+            System.out.println("Transferência inválida: valor inválido ou saldo insuficiente.");
+        }
     }
+
 
     public void exibirExtrato() {
         System.out.println("Extrato:");
