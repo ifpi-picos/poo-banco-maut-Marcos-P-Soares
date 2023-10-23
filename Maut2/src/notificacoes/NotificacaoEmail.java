@@ -1,4 +1,4 @@
-package notificações;
+package notificacoes;
 
 public class NotificacaoEmail implements Notificacao {
 

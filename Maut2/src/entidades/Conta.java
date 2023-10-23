@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import notificacoes.Notificacao;
+
 public abstract class Conta {
     protected final int agencia;
     protected final int conta;  
@@ -11,6 +13,7 @@ public abstract class Conta {
     protected List<Transacao> transacoes;
     protected static int contador = 0;
     protected double taxaTransferencia = 0.10;
+    protected Notificacao notificacao;
     
     protected Conta(Cliente cliente) {
         this.cliente = cliente;
@@ -19,6 +22,7 @@ public abstract class Conta {
         this.agencia = gerarAgenciaAleatoria();
         contador++;
         this.transacoes = new ArrayList<>();
+        // this.notificacao = notificacao;
     }
 
     //Gera um numero de conta 
@@ -26,6 +30,10 @@ public abstract class Conta {
         Random random = new Random();
         int agencia = random.nextInt(10000);
         return agencia;
+    }
+
+    public void setNotificacao(Notificacao notificacao) {
+        this.notificacao = notificacao;
     }
 
     public String getNumeroConta() {
