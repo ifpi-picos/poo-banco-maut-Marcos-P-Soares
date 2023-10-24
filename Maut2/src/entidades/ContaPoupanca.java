@@ -1,10 +1,13 @@
 package entidades;
+
+import notificacoes.Notificacao;
+
 public class ContaPoupanca extends Conta{
     private double taxaSaque = 0.05;
     private double rendimento;
 
-    public ContaPoupanca(Cliente cliente) {
-        super(cliente);
+    public ContaPoupanca(Cliente cliente, Notificacao notificacao) {
+        super(cliente, notificacao);
     }
     
     public void getTaxaSaque(double valor){

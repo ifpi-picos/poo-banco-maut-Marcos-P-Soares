@@ -15,14 +15,14 @@ public abstract class Conta {
     protected double taxaTransferencia = 0.10;
     protected Notificacao notificacao;
     
-    protected Conta(Cliente cliente) {
+    protected Conta(Cliente cliente, Notificacao notificacao) {
         this.cliente = cliente;
         this.saldo = 0;
         this.conta = contador;
         this.agencia = gerarAgenciaAleatoria();
         contador++;
         this.transacoes = new ArrayList<>();
-        // this.notificacao = notificacao;
+        this.notificacao = notificacao;
     }
 
     //Gera um numero de conta 
@@ -58,6 +58,7 @@ public abstract class Conta {
             this.saldo += valor;
             Transacao transacao = new Transacao (descricao, valor);
             this.transacoes.add(transacao);
+            this.notificacao.enviaNotificacao("Deposito de R$", valor);
         } else {
             System.out.println("Valor de depósito inválido.");
         }
@@ -68,6 +69,7 @@ public abstract class Conta {
             this.saldo -= valor;
             Transacao transacao = new Transacao (descricao, valor);
             this.transacoes.add(transacao);
+            this.notificacao.enviaNotificacao("Saque de R$", valor);
         } else {
             System.out.println("Valor de saque inválido ou saldo insuficiente.");
         }
@@ -80,6 +82,7 @@ public abstract class Conta {
             Transacao transacao = new Transacao(descricao, valor);
             this.transacoes.add(transacao);
             destino.depositar(valor, descricao);
+            this.notificacao.enviaNotificacao("Transferência de R$", valor);
         }else {
             System.out.println("Transferência inválida: valor inválido ou saldo insuficiente.");
         }

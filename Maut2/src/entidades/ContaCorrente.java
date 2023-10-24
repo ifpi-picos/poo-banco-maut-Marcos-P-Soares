@@ -1,14 +1,16 @@
 package entidades;
 import java.util.Scanner;
 
+import notificacoes.Notificacao;
+
 public class ContaCorrente extends Conta {
     private double chequeEspecial; //Conferir a lógica do cheque especial
     private int transferenciasGratuitas;
 
-    public ContaCorrente(Cliente clienteVinculado) {
-        super(clienteVinculado);
+    public ContaCorrente(Cliente clienteVinculado, Notificacao notificacao) {
+        super(clienteVinculado, notificacao);
         this.transferenciasGratuitas = 2;
-        this.chequeEspecial = this.saldo * 0.10;
+        this.chequeEspecial = 500;
     }
 
     @Override
@@ -27,12 +29,14 @@ public class ContaCorrente extends Conta {
                     Transacao transacao = new Transacao(descricao, valorComTaxa);
                     this.transacoes.add(transacao);
                     destino.depositar(valor, descricao);
+                    
                 } else {
                     System.out.println("Transferência inválida: saldo insuficiente.");
                 }
             } else {
                 System.out.println("Transferência inválida: limite de transferências gratuitas excedido.");
             }
+            this.notificacao.enviaNotificacao("Transferência de R$", valor);
         } else {
             System.out.println("Transferência inválida: valor inválido.");
         }
