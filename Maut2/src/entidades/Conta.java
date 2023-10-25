@@ -25,6 +25,10 @@ public abstract class Conta {
         this.notificacao = notificacao;
     }
 
+        
+    public Cliente getCliente() {
+        return cliente;
+    }
     //Gera um numero de conta 
     private int gerarAgenciaAleatoria() {
         Random random = new Random();
@@ -97,7 +101,4 @@ public abstract class Conta {
             index++;
         }
     }
-
-    
-
 }

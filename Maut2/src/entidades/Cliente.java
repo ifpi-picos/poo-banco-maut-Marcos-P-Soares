@@ -28,12 +28,18 @@ public class Cliente {
         return dataNascimento.format(formatoData);
     }
     
-    public String getEndereco(){
-        return endereco.toString();
+    public Endereco getEndereco(){
+        if (endereco != null) {
+            return endereco;
+        } else {
+            return null;
+        }
     }
 
     public void setEndereco(Endereco endereco){
         this.endereco = endereco;
     }
+
+    
 
 }
