@@ -1,7 +1,6 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
-
 import entidades.Cliente;
 import entidades.Conta;
 import entidades.ContaCorrente;
@@ -13,27 +12,32 @@ import notificacoes.NotificacaoSMS;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        // tudo ok, parabéns!
         SistemaBancario sistema = new SistemaBancario();
         Scanner scanner = new Scanner(System.in);
 
-        //2 Contas Correntes para fins de teste
-        Cliente cliente1 = new Cliente("João da Silva", "123.456.789-01", LocalDate.of(1990, 5, 15));
+        // 2 Contas Correntes para fins de teste
+        Cliente cliente1 =
+                new Cliente("João da Silva", "123.456.789-01", LocalDate.of(1990, 5, 15));
         ContaCorrente contaCorrente1 = new ContaCorrente(cliente1, new NotificacaoSMS());
         sistema.criarConta(contaCorrente1);
         contaCorrente1.depositar(1000.0, "Depósito inicial"); // Adicionando saldo de R$1000.0
 
-        // Cliente cliente2 = new Cliente("Maria Oliveira", "987.654.321-09", LocalDate.of(1985, 8, 20));
+        // Cliente cliente2 = new Cliente("Maria Oliveira", "987.654.321-09", LocalDate.of(1985, 8,
+        // 20));
         // ContaCorrente contaCorrente2 = new ContaCorrente(cliente2, new NotificacaoEmail());
         // sistema.criarConta(contaCorrente2);
         // contaCorrente2.depositar(1500.0, "Depósito inicial"); // Adicionando saldo de R$1500.0
         System.out.println();
-        //2 Contas Poupança para fins de teste
-        Cliente cliente3 = new Cliente("Pedro Santos", "456.789.123-04", LocalDate.of(1982, 11, 10));
+        // 2 Contas Poupança para fins de teste
+        Cliente cliente3 =
+                new Cliente("Pedro Santos", "456.789.123-04", LocalDate.of(1982, 11, 10));
         ContaPoupanca contaPoupanca1 = new ContaPoupanca(cliente3, new NotificacaoSMS());
         sistema.criarConta(contaPoupanca1);
         contaPoupanca1.depositar(2000.0, "Depósito inicial"); // Adicionando saldo de R$2000.0
 
-        // Cliente cliente4 = new Cliente("Ana Rodrigues", "789.123.456-07", LocalDate.of(1995, 3, 25));
+        // Cliente cliente4 = new Cliente("Ana Rodrigues", "789.123.456-07", LocalDate.of(1995, 3,
+        // 25));
         // ContaPoupanca contaPoupanca2 = new ContaPoupanca(cliente4, new NotificacaoEmail());
         // sistema.criarConta(contaPoupanca2);
         // contaPoupanca2.depositar(2500.0, "Depósito inicial"); // Adicionando saldo de R$2500.0
@@ -93,7 +97,8 @@ public class Main {
         System.out.print("Data de nascimento (dd/MM/yyyy): ");
         String dataNascimentoStr = scanner.nextLine();
 
-        LocalDate dataNascimento = LocalDate.parse(dataNascimentoStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        LocalDate dataNascimento =
+                LocalDate.parse(dataNascimentoStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
         Cliente cliente = new Cliente(nome, cpf, dataNascimento);
 
